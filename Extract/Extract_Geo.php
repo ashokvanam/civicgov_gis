@@ -43,7 +43,7 @@ function importParcels()
     header("Content-Type: text/csv");
     header("Content-Disposition: attachment; filename=latlon.csv");
 
-    $API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Taxlots/MapServer/0/query?";
+    $API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
     $all_results = array();
     $ids = getObjectIDs($API_ENDPOINT);
     $count = 0;
