@@ -244,14 +244,18 @@ require([
     }
 	function searchAddress(field,operator,val){
         var where;
-        field = 'upper(' + field + ')';
-       
+        if(isNaN(val)){ //if it is text
+            field = 'upper(' + field + ')';
+        }
         if (operator == "in"){
             where  = field + ' ' + operator + ' (' + val + ')';
         }
         else
         {
-            val = 'upper(' + val + ')';
+            if(isNaN(val)){ //if it is text
+                val = 'upper(' + val + ')';
+            }
+            
             where  = field + ' ' + operator + ' ' + val;
         }
         querySearchRest(where);
@@ -362,6 +366,11 @@ require([
             view: view
           });
           // Add widget to the top right corner of the view
+		var custom = document.getElementById('divLegend');
+        view.ui.add(custom, {
+          position: "bottom-left",
+        //  index: 2
+        });
         view.ui.add(layerList, "top-right");
         //setSelectLayer(graphicLayer);
         webmap.add(graphicSelectionLayer);
