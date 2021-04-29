@@ -1,6 +1,44 @@
 <?php
 
 //IMPORT PARCELS FROM GIS *******************************
+$TOKEN = '';
+function getToken()
+{//"username=$USERNAME&password=$PASSWORD&client=ip&ip=$SERVER_IP&f=json"
+    $url = "https://services5.integritygis.com/arcgis/tokens/";
+	    
+    //The fields included in the request
+    $fields = array(
+        'request' => 'getToken',
+        'username' => 'Marshall',
+        'password' => 'U2xFHu2k@Y',
+        'expiration' => 120,
+        //'clientid' => 'ref.' . $RequestingPage . '/',
+        'client'=> 'ip',
+        'ip' => '198.37.116.250',
+        'f' => 'json'
+    );
+    $fields_string = "";
+    foreach($fields as $key=>$value) {
+        $fields_string .= $key.'='.$value.'&'; 
+    }
+    //Instantiate Curl
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch,CURLOPT_POST,count($fields));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //curl_setopt($ch, CURLOPT_REFERER, $RequestingPage);
+    
+    $result = curl_exec($ch);
+    curl_close($ch);
+    //echo 'token'.$result;
+    $someObject = json_decode($result);
+    //echo $someObject->token;
+    $TOKEN = $someObject->token;
+    //return $someObject->token;
+  
+	    
+}
 function getCount($API_ENDPOINT)
 {
 	$typeofjson = "pjson";
@@ -16,7 +54,7 @@ function getCount($API_ENDPOINT)
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => "POST",
-		CURLOPT_POSTFIELDS => "where=1%3D1&f=$typeofjson&returnCountOnly=true",
+		CURLOPT_POSTFIELDS => "where=1%3D1&f=$typeofjson&returnCountOnly=true&token=".$TOKEN ,
 		CURLOPT_HTTPHEADER => array(
 			"Content-Type: application/x-www-form-urlencoded"
 		),
@@ -43,7 +81,7 @@ function getObjectIDs($API_ENDPOINT)
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => "POST",
-		CURLOPT_POSTFIELDS => "where=1%3D1&f=$typeofjson&returnIdsOnly=true",
+		CURLOPT_POSTFIELDS => "where=1%3D1&f=$typeofjson&returnIdsOnly=true&token=".$TOKEN ,
 		CURLOPT_HTTPHEADER => array(
 			"Content-Type: application/x-www-form-urlencoded"
 		),
@@ -72,7 +110,7 @@ function requestDataSetById($ids, $API_ENDPOINT)
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => "POST",
-		CURLOPT_POSTFIELDS => "objectids=" . $ids . "&f=$typeofjson&returnGeometry=false&outfields=" . $outfields,
+		CURLOPT_POSTFIELDS => "objectids=" . $ids . "&f=$typeofjson&returnGeometry=false&outfields=" . $outfields ."&token=".$TOKEN ,
 		CURLOPT_HTTPHEADER => array(
 			"Content-Type: application/x-www-form-urlencoded"
 		),
@@ -91,7 +129,7 @@ function requestDataSetById($ids, $API_ENDPOINT)
 function importParcels()
 {
 	$typeofjson = "pjson";
-	$data = "https://maps103.halff.com/chimera/rest/services/Ennis_Update/EnnisECAD/MapServer/0/query?";
+	$data = "https://services5.integritygis.com/arcgis/rest/services/Public/Marshall_Assessor_Data/MapServer/10/query?";
 	if(!empty($data)) {
 		$API_ENDPOINT = $data['value'];
 		$all_results = array();

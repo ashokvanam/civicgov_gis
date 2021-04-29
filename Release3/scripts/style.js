@@ -125,11 +125,13 @@ function populateLegendStyle(){
         var eachDiv = document.createElement('div');
         eachDiv.style.width="16px";
         eachDiv.style.height="16px";
+		
         eachDiv.style.backgroundColor = map_config.layers[i].legendColor;      
         
         var txt = document.createElement('label');
         //txt.type ='label';
         txt.innerHTML = map_config.layers[i].legendText;
+		
         document.getElementById('divLegend').appendChild(eachDiv);
         document.getElementById('divLegend').appendChild(txt);
     }
@@ -145,6 +147,7 @@ function populateLegendStyle(){
         var txt = document.createElement('label');
         //txt.type ='label';
         txt.innerHTML = eachStyle.legendText;
+		
         document.getElementById('divLegend').appendChild(eachDiv);
         document.getElementById('divLegend').appendChild(txt);
     }

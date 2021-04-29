@@ -2,10 +2,47 @@
 
 include_once('geoPHP/geoPHP.inc');
 //This PHP code is to find the Adjacent Parcels around given Parcel Number and within given radius  (in USA Feet).
-
+$TOKEN = '';
+function getToken()
+{//"username=$USERNAME&password=$PASSWORD&client=ip&ip=$SERVER_IP&f=json"
+    $url = "https://services5.integritygis.com/arcgis/tokens/";
+	    
+    //The fields included in the request
+    $fields = array(
+        'request' => 'getToken',
+        'username' => 'Marshall',
+        'password' => 'U2xFHu2k@Y',
+        'expiration' => 120,
+        //'clientid' => 'ref.' . $RequestingPage . '/',
+        'client'=> 'ip',
+        'ip' => '198.37.116.250',
+        'f' => 'json'
+    );
+    $fields_string = "";
+    foreach($fields as $key=>$value) {
+        $fields_string .= $key.'='.$value.'&'; 
+    }
+    //Instantiate Curl
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch,CURLOPT_POST,count($fields));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //curl_setopt($ch, CURLOPT_REFERER, $RequestingPage);
+    
+    $result = curl_exec($ch);
+    curl_close($ch);
+    //echo 'token'.$result;
+    $someObject = json_decode($result);
+    //echo $someObject->token;
+    $TOKEN = $someObject->token;
+    //return $someObject->token;
+  
+	    
+}
 function getObjectIDs($API_ENDPOINT)
 {
-    $data1 = array("where" => "1=1", "f" => "geojson", "returnIdsOnly" => "true");
+    $data1 = array("where" => "1=1", "f" => "geojson", "returnIdsOnly" => "true" , "token"=>$TOKEN);
     $options = array(
         'http' => array(
             'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -23,7 +60,7 @@ function getObjectIDs($API_ENDPOINT)
 function requestDataSetById($ids, $API_ENDPOINT)
 {
     $outfields = "PROPERTYID"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
-    $data1 = array("objectids" => $ids, "f" => "geojson", "returnGeometry" => "true", "outfields" => $outfields);
+    $data1 = array("objectids" => $ids, "f" => "geojson", "returnGeometry" => "true", "outfields" => $outfields, "token"=>$TOKEN);
     $options = array(
         'http' => array(
             'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -43,7 +80,7 @@ function importParcels()
     header("Content-Type: text/csv");
     header("Content-Disposition: attachment; filename=latlon.csv");
 
-    $API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
+    $API_ENDPOINT = "https://services5.integritygis.com/arcgis/rest/services/Public/Marshall_Assessor_Data/MapServer/10/query?";
     $all_results = array();
     $ids = getObjectIDs($API_ENDPOINT);
     $count = 0;
