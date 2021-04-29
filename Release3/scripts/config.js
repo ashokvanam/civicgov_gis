@@ -17,12 +17,12 @@
         parcelLinkField: "PARCEL_ID", 
 		parcelLinkFieldType:"text",
         records:{
-            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['PARCEL_ID']]},
-            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['PARCEL_ID']]},
-            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['PARCEL_ID']]},
-            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['PARCEL_ID']]},
-            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['PARCEL_ID']]},
-            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['PARCEL_ID']]}
+            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PARCEL_ID']]},
+            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PARCEL_ID']]},
+            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PARCEL_ID']]},
+            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PARCEL_ID']]},
+            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PARCEL_ID']]},
+            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PARCEL_ID']]}
         }
 	},
     layers:{
