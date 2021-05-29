@@ -22,7 +22,7 @@ function getObjectIDs($API_ENDPOINT)
 
 function requestDataSetById($ids, $API_ENDPOINT)
 {
-    $outfields = "PROPERTYID"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
+    $outfields = "RPS_Link"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
     $data1 = array("objectids" => $ids, "f" => "geojson", "returnGeometry" => "true", "outfields" => $outfields);
     $options = array(
         'http' => array(
