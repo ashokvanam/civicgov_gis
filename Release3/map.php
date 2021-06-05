@@ -221,7 +221,7 @@
             <div id="divResults" style="background-color:whitesmoke;overflow-y:scroll;">
 
             </div>
-            <div id="divLegend" style="position:absolute; bottom:0; right:0; width: 150px; margin:15px; height:auto;overflow-y:auto;background-color:white;" >
+            <div id="divLegend" style="overflow-y:scroll;background-color:white;">
             </div>
             <!--            <div id="divResultsAll"-->
             <!--                 style="font-size:small; height:200px; width:100%; overflow-y:scroll;background-color:white;">-->
