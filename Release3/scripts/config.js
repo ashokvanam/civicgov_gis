@@ -1,72 +1,51 @@
 ﻿var map_config = {
-    WEB_MAP_ID: '5853b7358790483ab683340c1f883880', //#1
-   //WEB_MAP_ID:"6ff64a259999443181ca98e04eb4f631",
+    WEB_MAP_ID: '8d6cfb69e70146f68af35167e407cd0b', //#1
+   //WEB_MAP_ID:"8d6cfb69e70146f68af35167e407cd0b",
    // ASSET_ID: 'MBL',
    // FIELDS: ["MBL", "LOCATION",],
    // FIELD_ALIAS:["MBL#", "ADDRESS"],
     ASSET_NUMBER:'',
 	search:{
         //url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Basemap_Color_Buildings/MapServer/0",		
-        url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2",
-		keyField:"PROPERTYID", //This key link to the Parcel Layer
+        url:"https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0",
+		keyField:"PROP_ID", //This key link to the Parcel Layer
 		keyFieldType:"text",
-        FIELDS: ['PROPERTYID',"STATE_ID", "RNO","OWNER1","SITEADDR"],
-        //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
-        FIELD_ALIAS:["Property ID","State ID","RNO", "Owner 1","Address"],
-        civicgovField: "PROPERTYID", civicgovFieldType:"text",
-        parcelLinkField: "PROPERTYID", parcelLinkFieldType:"text",
+        FIELDS: ["PROP_ID","OWNER_NAME","SITUS_ADDR"],
+        //FIELD_ALIAS:["ParcelNumeber","Ownername","Address"],
+        FIELD_ALIAS:["Property ID","Owner","Address"],
+        civicgovField: "PROP_ID", civicgovFieldType:"text",
+        parcelLinkField: "PROP_ID", parcelLinkFieldType:"text",
         records:{
-            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PROPERTYID']]}
+            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PROP_ID']]},
+            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PROP_ID']]},
+            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PROP_ID']]},
+            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PROP_ID']]},
+            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PROP_ID']]},
+            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PROP_ID']]}
         }
 	},
     layers:{
         0:{
             name:"Parcel",            
             selectable:true, 
-            //keyField:"STATE_ID",
-            keyField:"PROPERTYID",
+            //keyField:"PROP_ID",
+            keyField:"PROP_ID",
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
-            legendText:'Parcel',			
-            Link_Layer:"Building",
-            Link_Field:"PROPERTYID",
-            Link_Field_Type:"text",
-            fields:['PROPERTYID',"STATE_ID", "RNO","OWNER1","SITEADDR"],
-            displayFieldNames:["Property ID","State ID","RNO", "Owner 1","Address"],
+            legendText:'Parcel',	      
+            fields:["PROP_ID","OWNER_NAME","SITUS_ADDR"],
+            displayFieldNames:["Property ID","Owner","Address"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PROPERTYID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PROPERTYID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PROPERTYID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PROPERTYID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PROPERTYID}"},
-                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PROPERTYID}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PROP_ID}"},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PROP_ID}"},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PROP_ID}"},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PROP_ID}"},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PROP_ID}"},
+                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PROP_ID}"}
             },
             addRecord: true
         },
-        1:{
-            name:"Building",           
-            selectable:true,
-            keyField:"BLDG_ID",
-            keyFieldType:"text", 
-			legendColor:'#EECFFC',
-            legendText:'Building',
-            fields:["BLDG_ID", "PROPERTY_ID","PRIMARY_ADDRESS","ASSESSOR_PROPERTY_DESCRIPTION"],
-            displayFieldNames:["Building ID","Property ID", "Address","Assessor"],
-            records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                5:{ disabled: false, name: "License", add:"../../projects/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"}
-            },
-            addRecord: true
-        }
+        
     },
     cg_layers:{
         1:{
