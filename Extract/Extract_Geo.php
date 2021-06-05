@@ -22,7 +22,7 @@ function getObjectIDs($API_ENDPOINT)
 
 function requestDataSetById($ids, $API_ENDPOINT)
 {
-    $outfields = "PROPERTYID"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
+    $outfields = "PROP_ID"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
     $data1 = array("objectids" => $ids, "f" => "geojson", "returnGeometry" => "true", "outfields" => $outfields);
     $options = array(
         'http' => array(
@@ -43,7 +43,7 @@ function importParcels()
     header("Content-Type: text/csv");
     header("Content-Disposition: attachment; filename=latlon.csv");
 
-    $API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
+    $API_ENDPOINT = "https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0/query?";
     $all_results = array();
     $ids = getObjectIDs($API_ENDPOINT);
     $count = 0;
@@ -54,7 +54,7 @@ function importParcels()
         $numItems = count($requestID);
 
         // process csv in chunks of 1000
-        if ($numItems == 1000) {
+        if ($numItems == 100) {
             $count = $count + $numItems;
             $idlist = implode(",", $requestID);
             $result = requestDataSetById($idlist, $API_ENDPOINT);

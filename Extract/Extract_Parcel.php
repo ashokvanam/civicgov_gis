@@ -4,7 +4,7 @@
 function getCount($API_ENDPOINT)
 {
 	$typeofjson = "pjson";
-	$API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
+	$API_ENDPOINT = "https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0/query?";
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
@@ -31,7 +31,7 @@ function getCount($API_ENDPOINT)
 function getObjectIDs($API_ENDPOINT)
 {
 	$typeofjson = "pjson";
-	$API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
+	$API_ENDPOINT = "https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0/query?";
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
@@ -60,7 +60,7 @@ function requestDataSetById($ids, $API_ENDPOINT)
 	$outfields = "*"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
 	$attributes = array();
 	$typeofjson = "pjson";
-	$API_ENDPOINT = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
+	$API_ENDPOINT = "https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0/query?";
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
