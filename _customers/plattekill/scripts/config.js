@@ -7,20 +7,20 @@
     ASSET_NUMBER:'',
 	search:{
         url:"https://gis.ulstercountyny.gov/arcgis/rest/services/Tax_Parcels/Tax_Parcel_Data/MapServer/0",
-		keyField:"RPS_Link", //This key link to the Parcel Layer
+		keyField:"PRINTKEY", //This key link to the Parcel Layer
 		keyFieldType:"text",
-        FIELDS: ['RPS_Link','PARCEL_ADDRESS','OWNER'],
+        FIELDS: ['PRINTKEY','PARCEL_ADDRESS','OWNER'],
         //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
-        FIELD_ALIAS:['RPS_Link','PARCEL_ADDRESS','OWNER'],
-        civicgovField: "RPS_Link", civicgovFieldType:"text",
-        parcelLinkField: "RPS_Link", parcelLinkFieldType:"text",
+        FIELD_ALIAS:['PRINTKEY','PARCEL_ADDRESS','OWNER'],
+        civicgovField: "PRINTKEY", civicgovFieldType:"text",
+        parcelLinkField: "PRINTKEY", parcelLinkFieldType:"text",
         records:{
-            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','RPS_Link']]},
-            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','RPS_Link']]},
-            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','RPS_Link']]},
-            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','RPS_Link']]},
-            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','RPS_Link']]},
-            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','RPS_Link']]}
+            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PRINTKEY']]},
+            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PRINTKEY']]},
+            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PRINTKEY']]},
+            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PRINTKEY']]},
+            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PRINTKEY']]},
+            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PRINTKEY']]}
         }
 	},
     layers:{
@@ -28,24 +28,24 @@
             name:"Parcel",            
             selectable:true, 
             //keyField:"STATE_ID",
-            keyField:"RPS_Link",
+            keyField:"PRINTKEY",
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
             legendText:'Parcel',			
             // Link_Layer:"Building",
-            // Link_Field:"RPS_Link",
+            // Link_Field:"PRINTKEY",
             // Link_Field_Type:"text",
-            fields:['RPS_Link','PARCEL_ADDRESS','PARCEL_CITY','OWNER','OWNER2','MAILING_ADDRESS','MAILING_ADDRESS_1','MAILING_ADDRESS_2','MAILING_CITY','MAILING_ZIP','ACRES','PROP_CLASS','FRONT','DEPTH','SWIS_CODE','DEED_BOOK','DEED_PAGE','PRINTKEY'
+            fields:['PRINTKEY','PARCEL_ADDRESS','PARCEL_CITY','OWNER','OWNER2','MAILING_ADDRESS','MAILING_ADDRESS_1','MAILING_ADDRESS_2','MAILING_CITY','MAILING_ZIP','ACRES','PROP_CLASS','FRONT','DEPTH','SWIS_CODE','DEED_BOOK','DEED_PAGE','PRINTKEY'
         ],
-            displayFieldNames:['RPS_Link','PARCEL_ADDRESS','PARCEL_CITY','OWNER','OWNER2','MAILING_ADDRESS','MAILING_ADDRESS_1','MAILING_ADDRESS_2','MAILING_CITY','MAILING_ZIP','ACRES','PROP_CLASS','FRONT','DEPTH','SWIS_CODE','DEED_BOOK','DEED_PAGE','PRINTKEY'
+            displayFieldNames:['PRINTKEY','PARCEL_ADDRESS','PARCEL_CITY','OWNER','OWNER2','MAILING_ADDRESS','MAILING_ADDRESS_1','MAILING_ADDRESS_2','MAILING_CITY','MAILING_ZIP','ACRES','PROP_CLASS','FRONT','DEPTH','SWIS_CODE','DEED_BOOK','DEED_PAGE','PRINTKEY'
         ],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={RPS_Link}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={RPS_Link}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={RPS_Link}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={RPS_Link}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={RPS_Link}"},
-                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={RPS_Link}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PRINTKEY}"},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PRINTKEY}"},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PRINTKEY}"},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PRINTKEY}"},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PRINTKEY}"},
+                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PRINTKEY}"}
             },
             addRecord: true
         }
