@@ -23,7 +23,7 @@ function generatePopupContent(layerConfig){
 
     var i = 0;
     var divPopup = document.createElement('div')
-    //divPopup.style.height = "250px";
+    //divPopup.style.maxWidth = "500px";
     var tblFeatureInfo = document.createElement('table');
     tblFeatureInfo.id =   "results";
 
@@ -43,7 +43,7 @@ function generatePopupContent(layerConfig){
     var recordsConfig = layerConfig.records;
    // if (layerConfig.addRecord){
     var tblrecords = document.createElement('table');
-    tblrecords.id =   "attributes";
+    tblrecords.id =   "attributespopup";
     var row =document.createElement('tr');
         for (var j in recordsConfig){
             if (recordsConfig[j].disabled == false){

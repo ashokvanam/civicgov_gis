@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -71,7 +72,7 @@
         /*#results td, #customers th {*/
         /*border: 1px solid #ddd;*/
         /*padding: 8px;*/
-        /*font-size: smaller;*/
+        /*font-size:12px;*/
         /*width:50%;*/
         /*}*/
 
@@ -159,20 +160,43 @@
     </style>
 
     <style>
+
         table, td, th {
             border: 1px solid black;
-            text-align: center;
-        }
+            text-align: center; 
+            font-size: 9px;
 
-        #attributes > tbody > tr > td > a {
+
+
+       }
+
+
+
+        #results{
+            table-layout:fixed;
+            width:100%;     
+            word-break: break-word;     
+            font-size: small;  
+        }
+        #attributespopup{
+            table-layout:fixed;
+            width:100%;     
+            word-break: break-word;     
+            font-size: xx-small;  
+        }
+        #attributes,#attributespopup > tbody > tr > td > a {
             color: blue;
             text-decoration: underline;
-            font-weight: 20;
+
+
+          
         }
 
         table {
             border-collapse: collapse;
             width: 100%;
+
+
         }
 
         .mm-iconbar{
@@ -203,7 +227,7 @@
 <body>
 <div id="page">
     <div class="header" style="background-color: #333;">
-        <?php if(!isset($_REQUEST['flag'])) { ?>
+    <?php if(!isset($_REQUEST['flag'])) { ?>
             <a href="#menu"><span></span></a>
         <?php } ?>
         CIVICGov GIS - Marshall
@@ -211,7 +235,7 @@
     </div>
     <div class="content">
         <div id="viewDiv"></div>
-        <div id="divSearch" style="position:absolute;top:30%;left:0%;width:25%;display: none">
+        <div id="divSearch" style="position:absolute;top:30%;left:0%;width:100%;display: none">
             <input id="txtDistance" name="btnAb" placeholder="In US Feet" onkeyup=""/>
             <input type="button" name="btnAb" id="btnAbutter" value="Abutter"/>
             <br/>
@@ -307,8 +331,7 @@
 
     <?php if(isset($_GET['flag']) && $_GET['flag'] == '1'){ ?>
         <button style="margin-right: 10px; margin-bottom: 5px; float: right; align-self: flex-end;" onclick="saveAdjacent()">Save Parcels</button>
-    <?php } ?>
-
+    <?php } ?>    
 
     <!-- mmenu scripts -->
     <script src="../dist/mmenu.js"></script>
@@ -366,7 +389,7 @@
         ;
 
         <?php } ?>
-
+        
         function handleSearch(el) {
 //            console.log(el.value, el.id);
             $("input[name="+el.id+"]").val(el.value);
@@ -466,8 +489,7 @@
             toggleLayers();
         },2000)
 
-        <?php } ?>
-
+        <?php } ?>        
 
 
 
