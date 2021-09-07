@@ -88,8 +88,8 @@ function addCentroid($feature)
         if (count($feature['geometry']['coordinates']) > 0) {
             $polygon = geoPHP::load(json_encode($feature['geometry']), 'json');
             $properties = $feature['properties'];
-            $properties['longitude'] = $polygon->centroid()->x();
-            $properties['latitude'] = $polygon->centroid()->y();
+            $properties['longitude'] = $polygon->pointN(2)->x();
+            $properties['latitude'] = $polygon->pointN(2)->y();
         }
     } catch (Exception $e) {
         return false;
