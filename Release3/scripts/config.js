@@ -33,8 +33,9 @@
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
             legendText:'Parcel',	      
-            fields:["PROP_ID","OWNER_NAME","SITUS_ADDR"],
-            displayFieldNames:["Property ID","Owner","Address"],
+            fields:['FID','OBJECTID','PROP_ID','GEO_ID','OWNER_NAME','NAME_CARE','LEGAL_AREA','LGL_AREA_U','GIS_AREA','GIS_AREA_U','LEGAL_DESC','STAT_LAND_','LOC_LAND_U','LAND_VALUE','IMP_VALUE','MKT_VALUE','SITUS_ADDR','SITUS_NUM','SITUS_STRE','SITUS_ST_1','SITUS_ST_2','SITUS_CITY','SITUS_STAT','SITUS_ZIP','MAIL_ADDR','MAIL_LINE1','MAIL_LINE2','MAIL_CITY','MAIL_STAT','MAIL_ZIP','SOURCE','DATE_ACQ','FIPS','COUNTY','TAX_YEAR','YEAR_BUILT','SHAPE_Leng','SHAPE_Area','AS_VALUE','Shape__Area','Shape__Length'
+],
+            displayFieldNames:['FID','OBJECTID','PROP_ID','GEO_ID','OWNER_NAME','NAME_CARE','LEGAL_AREA','LGL_AREA_U','GIS_AREA','GIS_AREA_U','LEGAL_DESC','STAT_LAND_','LOC_LAND_U','LAND_VALUE','IMP_VALUE','MKT_VALUE','SITUS_ADDR','SITUS_NUM','SITUS_STRE','SITUS_ST_1','SITUS_ST_2','SITUS_CITY','SITUS_STAT','SITUS_ZIP','MAIL_ADDR','MAIL_LINE1','MAIL_LINE2','MAIL_CITY','MAIL_STAT','MAIL_ZIP','SOURCE','DATE_ACQ','FIPS','COUNTY','TAX_YEAR','YEAR_BUILT','SHAPE_Leng','SHAPE_Area','AS_VALUE','Shape__Area','Shape__Length'],
             records:{
                 0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PROP_ID}"},
                 1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PROP_ID}"},

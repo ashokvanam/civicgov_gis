@@ -8,6 +8,7 @@ function getCount($API_ENDPOINT)
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
+	CURLOPT_SSL_VERIFYPEER=>false,
 		CURLOPT_URL => $API_ENDPOINT,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
@@ -35,6 +36,7 @@ function getObjectIDs($API_ENDPOINT)
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
+		CURLOPT_SSL_VERIFYPEER=>false,
 		CURLOPT_URL => $API_ENDPOINT,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
@@ -49,6 +51,7 @@ function getObjectIDs($API_ENDPOINT)
 		),
 	));
 	$response = curl_exec($curl);
+	echo $response;
 	curl_close($curl);
 	$data = json_decode($response, true);
 	return $data["objectIds"];
@@ -64,6 +67,7 @@ function requestDataSetById($ids, $API_ENDPOINT)
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
+	CURLOPT_SSL_VERIFYPEER=>false,
 		CURLOPT_URL => $API_ENDPOINT,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
@@ -91,9 +95,9 @@ function requestDataSetById($ids, $API_ENDPOINT)
 function importParcels()
 {
 	$typeofjson = "pjson";
-	$data = "https://maps103.halff.com/chimera/rest/services/Ennis_Update/EnnisECAD/MapServer/0/query?";
-	if(!empty($data)) {
-		$API_ENDPOINT = $data['value'];
+	$API_ENDPOINT = "https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0/query?";
+	//if(!empty($data)) {
+		//$API_ENDPOINT = $data['value'];
 		$all_results = array();
 		$counts = getCount($API_ENDPOINT);
 		$ids = getObjectIDs($API_ENDPOINT);
@@ -124,7 +128,7 @@ function importParcels()
 
 		fclose($fp);
 		return "parcels_data.csv";
-	}
+	//}
 }
 
 //*******************************************************
