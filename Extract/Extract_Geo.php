@@ -17,7 +17,7 @@ function getObjectIDs($API_ENDPOINT)
 
     $response = file_get_contents($API_ENDPOINT, false, $context);
     $data = json_decode($response, true);
-    return $data["objectIds"];
+    return $data["properties"]["objectIds"];
 }
 
 function requestDataSetById($ids, $API_ENDPOINT)
@@ -45,7 +45,7 @@ function importParcels()
 
     $API_ENDPOINT = "https://services9.arcgis.com/37pqcAYwowkkAZyP/ArcGIS/rest/services/Parcel/FeatureServer/0/query?";
     $all_results = array();
-    $ids = getObjectIDs($API_ENDPOINT);
+    $ids = getObjectIDs($API_ENDPOINT);    
     $count = 0;
     $requestID = array();
     $fp = fopen("php://output", "wb");
