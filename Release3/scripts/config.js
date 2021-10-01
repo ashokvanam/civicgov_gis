@@ -1,5 +1,5 @@
 ﻿var map_config = {
-    WEB_MAP_ID: '5853b7358790483ab683340c1f883880', //#1
+    WEB_MAP_ID: '9f8efc2922de49f7beb10aba5f725a96', //#1
    //WEB_MAP_ID:"6ff64a259999443181ca98e04eb4f631",
    // ASSET_ID: 'MBL',
    // FIELDS: ["MBL", "LOCATION",],
@@ -7,63 +7,62 @@
     ASSET_NUMBER:'',
 	search:{
         //url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Basemap_Color_Buildings/MapServer/0",		
-        url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2",
-		keyField:"PROPERTYID", //This key link to the Parcel Layer
-		keyFieldType:"text",
-        FIELDS: ['PROPERTYID',"STATE_ID", "RNO","OWNER1","SITEADDR"],
+        url:"https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0",
+		keyField:"SEGMENT_ID", //This key link to the Parcel Layer
+		keyFieldType:"number",
+        FIELDS: ['SEGMENT_ID',"ROADNAME", "STREETNAME","STREETTYPE"],
         //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
-        FIELD_ALIAS:["Property ID","State ID","RNO", "Owner 1","Address"],
-        civicgovField: "PROPERTYID", civicgovFieldType:"text",
-        parcelLinkField: "PROPERTYID", parcelLinkFieldType:"text",
+        FIELD_ALIAS:["Segment ID","Road Name","Street", "Street Type"],
+        civicgovField: "SEGMENT_ID", civicgovFieldType:"number",
+        parcelLinkField: "SEGMENT_ID", parcelLinkFieldType:"number",
         records:{
-            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PROPERTYID']]},
-            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PROPERTYID']]}
+            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['asset_number','SEGMENT_ID']]}
         }
 	},
     layers:{
         0:{
             name:"Parcel",            
-            selectable:true, 
-            //keyField:"STATE_ID",
-            keyField:"PROPERTYID",
+            selectable:true, 					
+            //keyField:"PID",
+            keyField:"AssessProCopy.dbo.vwNashIMS.PID",
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
-            legendText:'Parcel',			
-            Link_Layer:"Building",
-            Link_Field:"PROPERTYID",
-            Link_Field_Type:"text",
-            fields:['PROPERTYID',"STATE_ID", "RNO","OWNER1","SITEADDR"],
-            displayFieldNames:["Property ID","State ID","RNO", "Owner 1","Address"],
+            legendText:'Parcel',			 
+           // Link_Field:"AssessProCopy.dbo.vwNashIMS.PID",
+            //Link_Field_Type:"text",
+            fields:["NashuaGISReplica.GISOWNER.Parcels_Poly.PID","AssessProCopy.dbo.vwNashIMS.OWNER1","AssessProCopy.dbo.vwNashIMS.LOCATION"],
+            displayFieldNames:["PID","Owner Name","Address"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PROPERTYID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PROPERTYID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PROPERTYID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PROPERTYID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PROPERTYID}"},
-                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PROPERTYID}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"}
             },
             addRecord: true
         },
         1:{
-            name:"Building",           
+            name:"Road",           
             selectable:true,
-            keyField:"BLDG_ID",
+            keyField:"SEGMENT_ID",
             keyFieldType:"text", 
 			legendColor:'#EECFFC',
             legendText:'Building',
-            fields:["BLDG_ID", "PROPERTY_ID","PRIMARY_ADDRESS","ASSESSOR_PROPERTY_DESCRIPTION"],
-            displayFieldNames:["Building ID","Property ID", "Address","Assessor"],
+            fields:["OBJECTID","ROADNAME","TYPE","PREFIX","STREETNAME","STREETTYPE","SUFFIX","SEGMENT_ID","LOW_L","HIGH_L","LOW_R","HIGH_R","ONE_WAY","GlobalID","CODE","FCC","US_Route","ST_Route","City","State",],
+            displayFieldNames:["OBJECTID","ROADNAME","TYPE","PREFIX","STREETNAME","STREETTYPE","SUFFIX","SEGMENT_ID","LOW_L","HIGH_L","LOW_R","HIGH_R","ONE_WAY","GlobalID","CODE","FCC","US_Route","ST_Route","City","State"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"},
-                5:{ disabled: false, name: "License", add:"../../projects/edit/0?parcel_number={PROPERTY_ID}&unit_id={BLDG_ID}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?asset_number={SEGMENT_ID}"},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?asset_number={SEGMENT_ID}"},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?asset_number={SEGMENT_ID}"},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?asset_number={SEGMENT_ID}"},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?asset_number={SEGMENT_ID}"},
+                5:{ disabled: false, name: "License", add:"../../projects/edit/0?asset_number={SEGMENT_ID}"}
             },
             addRecord: true
         }
