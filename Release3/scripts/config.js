@@ -10,9 +10,9 @@
         url:"https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0",
 		keyField:"SEGMENT_ID", //This key link to the Parcel Layer
 		keyFieldType:"number",
-        FIELDS: ['SEGMENT_ID',"ROADNAME", "STREETNAME","STREETTYPE"],
+        FIELDS: ['SEGMENT_ID',"ROADNAME" ], //"STREETNAME","STREETTYPE"
         //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
-        FIELD_ALIAS:["Segment ID","Road Name","Street", "Street Type"],
+        FIELD_ALIAS:["Segment ID","Road Name"], //"Street", "Street Type"
         civicgovField: "SEGMENT_ID", civicgovFieldType:"number",
         parcelLinkField: "SEGMENT_ID", parcelLinkFieldType:"number",
         records:{
@@ -26,13 +26,13 @@
 	},
     layers:{
         0:{
-            name:"Parcel",            
+            name:"Parcels",            
             selectable:true, 					
             //keyField:"PID",
             keyField:"AssessProCopy.dbo.vwNashIMS.PID",
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
-            legendText:'Parcel',			 
+            legendText:'Parcels',			 
            // Link_Field:"AssessProCopy.dbo.vwNashIMS.PID",
             //Link_Field_Type:"text",
             fields:["NashuaGISReplica.GISOWNER.Parcels_Poly.PID","AssessProCopy.dbo.vwNashIMS.OWNER1","AssessProCopy.dbo.vwNashIMS.LOCATION"],
@@ -52,8 +52,8 @@
             selectable:true,
             keyField:"SEGMENT_ID",
             keyFieldType:"text", 
-			legendColor:'#EECFFC',
-            legendText:'Building',
+			legendColor:'#CD8966',
+            legendText:'Road',
             fields:["OBJECTID","ROADNAME","TYPE","PREFIX","STREETNAME","STREETTYPE","SUFFIX","SEGMENT_ID","LOW_L","HIGH_L","LOW_R","HIGH_R","ONE_WAY","GlobalID","CODE","FCC","US_Route","ST_Route","City","State",],
             displayFieldNames:["OBJECTID","ROADNAME","TYPE","PREFIX","STREETNAME","STREETTYPE","SUFFIX","SEGMENT_ID","LOW_L","HIGH_L","LOW_R","HIGH_R","ONE_WAY","GlobalID","CODE","FCC","US_Route","ST_Route","City","State"],
             records:{

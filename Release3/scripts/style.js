@@ -38,7 +38,7 @@ var resultMarker = {
 // Create a symbol for drawing the line
 var lineSymbol = {
     type: "simple-line", // autocasts as SimpleLineSymbol()
-    color: [226, 119, 40],
+    color: [255, 255, 40],
     width: 4
 };
 
@@ -158,5 +158,8 @@ function getResultSymbol(geom)
     else if (geom.type == 'polygon')
     {
         return fillResultSymbol;
+    }
+    else if (geom.type == 'polyline'){
+        return lineSymbol;
     }
 }

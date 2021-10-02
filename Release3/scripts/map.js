@@ -596,9 +596,11 @@ require([
             alert('No parcel Selected');
             return;
         }
-        //var bufferGeometry = GeometryEngine.geodesicBuffer(graphicSelectionLayer.graphics.items[0].geometry, radius, 'feet');
-		geometryUsedForQuery(graphicSelectionLayer.graphics.items[0].geometry);
-        spatialQueryMapServer(graphicSelectionLayer.graphics.items[0].geometry);
+        var bufferGeometry = GeometryEngine.geodesicBuffer(graphicSelectionLayer.graphics.items[0].geometry, 8, 'feet');
+		//geometryUsedForQuery(graphicSelectionLayer.graphics.items[0].geometry);
+        //spatialQueryMapServer(graphicSelectionLayer.graphics.items[0].geometry);
+        geometryUsedForQuery(bufferGeometry);
+        spatialQueryMapServer(bufferGeometry);
         //graphicSelectionLayer.graphics.removeAll();
     }
 
@@ -643,7 +645,7 @@ require([
 			for (var i in graphicResultLayer.graphics.items)
 			{
 				var bufferGeometry = GeometryEngine.buffer(graphicResultLayer.graphics.items[i].geometry, 5, 'feet');
-				geomArray.push(bufferGeometry);
+				geomArray.push(bufferGeometry); 
 			  
 			}
 			unionBufferGeom = GeometryEngine.union(geomArray);
@@ -656,7 +658,8 @@ require([
             }
             //queryLinkedLayer('',queryResults.features);
             if (isSpatialSearch){
-                exportResultsLayer();
+               // exportResultsLayer();
+                exportResults(queryResults.features);
             }
             
 		}
@@ -665,7 +668,7 @@ require([
             exportResults(queryResults.features);
             
             if (isSpatialSearch == false){
-                queryLinkedLayer('Parcel',queryResults.features);
+                queryLinkedLayer('Road',queryResults.features);
             }
             
             isSpatialSearch = false;
