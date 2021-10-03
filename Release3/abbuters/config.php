@@ -5,13 +5,13 @@
 
 //http://tasks.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer/buffer
 
- $BUFFER_SERVICE = "https://www.portlandmaps.com/arcgis/rest/services/Utilities/Geometry/GeometryServer/buffer";
- $LAYER_QUERY_URL = "https://www.portlandmaps.com/arcgis/rest/services/Public/Fire_Integration_Layers/MapServer/2/query?";
+ $BUFFER_SERVICE = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/Utilities/Geometry/GeometryServer/buffer";
+ $LAYER_QUERY_URL = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?";
  // $LAYER_QUERY_URL = 'https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?';
- $SEARCH_KEY_FIELD ="PROPERTYID";
- $SEARCH_KEY_TYPE = "text";
- $GEOMETRY_TYPE = 'polygon';
- $OUTPUT_FIELDS = "PROPERTYID";
+ $SEARCH_KEY_FIELD ="SEGMENT_ID";
+ $SEARCH_KEY_TYPE = "number";
+ $GEOMETRY_TYPE = 'line';
+ $OUTPUT_FIELDS = "SEGMENT_ID";
  
  
  
