@@ -108,7 +108,7 @@ function importParcels()
 		foreach ($ids as $id) {
 			$requestID[] = $id;
 			$numItems = count($requestID);
-			if ($numItems == 1000) {
+			if ($numItems == 100) {
 				$count = $count + $numItems;
 				$idlist = implode(",", $requestID);
 				$result = requestDataSetById($idlist, $API_ENDPOINT);				
