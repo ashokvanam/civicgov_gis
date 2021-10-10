@@ -5,7 +5,7 @@ include_once('geoPHP/geoPHP.inc');
 
 function getObjectIDs($API_ENDPOINT)
 {
-    $data1 = array("where" => "1=1", "f" => "geojson", "returnIdsOnly" => "true");
+    $data1 = array("where" => "1=1", "f" => "pjson", "returnIdsOnly" => "true");
     $options = array(
         'http' => array(
             'header' => "Content-type: application/x-www-form-urlencoded\r\n",
