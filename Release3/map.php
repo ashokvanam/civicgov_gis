@@ -283,11 +283,11 @@
             </div>
         </div>
 <!--            OWNER SEARCH-->
-        <!-- <div id="panel-cart">
+        <div id="panel-cart">
             
             <div class="mm-searchfield">
                 <div class="mm-searchfield__input">
-                    <input type="text" autocomplete="off" placeholder="Search Owner..." id="Owner" onkeyup="handleSearch(this);">
+                    <input type="text" autocomplete="off" placeholder="Search Parcel..." id="Parcels" onkeyup="handleSearch(this);">
                     <a class="mm-btn mm-btn_close mm-searchfield__btn mm-hidden" href="#"></a>
                 </div>
             </div>
@@ -302,7 +302,7 @@
             <div style="padding: 10px;" class="customResults">
                 <p style="text-align: center; padding-top: 30px;">There are no search results for the keyword specified.<br/></p>
             </div>
-        </div> -->
+        </div>
     </nav>
 
     <?php if(isset($_GET['flag']) && $_GET['flag'] == '1'){ ?>
@@ -341,7 +341,7 @@
                 {
                     type: 'tabs',
                     content: ['<a href="#panel-menu"><i class="fa fa-home"></i> <span>Map #</span></a>', '<a href="#panel-account"><i class="fa fa-address-book"></i> <span>Address</span></a>',
-                     //'<a href="#panel-cart"><i class="fa fa-user"></i> <span>Owner</span></a>'
+                     '<a href="#panel-cart"><i class="fa fa-user"></i> <span>Parcel</span></a>'
                       ,'close']
                 }, {
                     content: ['prev', 'breadcrumbs'] //, 'close' ]
@@ -375,7 +375,7 @@
         }
 
         //$("#Parcel,#Address,#Owner,#btnAb").keypress(function (e) {
-        $("#Segment,#Address,#btnAb").keypress(function (e) {
+        $("#Segment,#Address,#Parcels,#btnAb").keypress(function (e) {
             var key = e.which;
             if(key == 13)  { // the enter key code
                 $(".customResults").html('<img style="display:block;margin:auto;" src="loading.gif"></img><h3 style="text-align: center; ">Please Wait ...</h3>');

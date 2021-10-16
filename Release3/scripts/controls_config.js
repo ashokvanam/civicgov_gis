@@ -1,7 +1,7 @@
 var searchcontrols_config = {
 	Asset:{enable:true, keyField:'SEGMENT_ID',keyFieldType:"number", layer:'Road',name:'Segment', operator:'='},
 	Address:{enable:true, keyField:'ROADNAME', keyFieldType:"text",layer:'Road', name:'Address', operator:'like'},
-	// Owner:{enable:true, keyField:'STREETNAME', keyFieldType:"text",layer:'Road', name:'Owner', operator:'like'}
+	Parcel:{enable:true, keyField:'NashuaGISReplica.GISOWNER.Parcels_Poly.PID', keyFieldType:"text",layer:'Parcels', name:'Parcels', operator:'='}
 };
 var spatialsearch_config= {
 	Parcel:{enable:true, keyField:'SEGMENT_ID',keyFieldType:"number", layer:'Road',name:'Segment', operator:'='},

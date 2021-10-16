@@ -50,6 +50,7 @@ require([
     var activeWidget = null;
     var zoomToResults= true;
     var isSpatialSearch = false;
+    var queryLayer = null;
    // initControls();
     var graphicSelectionLayer = new GraphicsLayer({
         id: 'Selection', title: 'Selected Parcel',
@@ -280,7 +281,7 @@ require([
 					txt = divSearchControl.children[i];
 				}
             }
-            // var searchLayer = findLayerByName(searchcontrols_config[each].layer);
+             var searchLayer = findLayerByName(searchcontrols_config[each].layer);
 			// if (!searchLayer)
 			// {
 				// searchLayer = createLayer(searchcontrols_config[each].layer);
@@ -289,12 +290,13 @@ require([
             btn.searchKeyField = searchcontrols_config[each].keyField;
             btn.searchKeyFieldType = searchcontrols_config[each].keyFieldType;
             btn.searchOperator = searchcontrols_config[each].operator;
-           // btn.targetLayer = searchLayer;
+           // btn.searchLayer = searchcontrols_config[each].layer;
+            btn.targetLayer = searchLayer;
 			btn.onclick = function(){
                 var adjText = this.relatedTxt.value;
                 //alert(adjText.value);
 				
-				//findByParcel(this.targetLayer,this.searchKeyField,this.searchOperator, adjText.value);
+				
 				if (this.searchKeyFieldType == "text"){      
                     if (this.searchOperator == "like"){
                         adjText = "'%" + adjText +"%'" ;    
@@ -304,7 +306,12 @@ require([
                     }             
                     
                 }
-				searchAddress(this.searchKeyField,this.searchOperator,adjText);
+                queryLayer = this.targetLayer;
+                findByParcel(this.targetLayer,this.searchKeyField,this.searchOperator, adjText);
+               // var lyr = findLayerByName('Parcels');
+               // findByParcel(lyr,this.searchKeyField,this.searchOperator,adjText)
+
+				//searchAddress(this.searchKeyField,this.searchOperator,adjText);
 			};
 			divSearch.appendChild(divSearchControl);
 		}
@@ -637,6 +644,7 @@ require([
                 }	 
 			}
         }
+        exportResults(queryResults.features);
 		if (queryResults.features[0].geometry)
 		{
 
@@ -719,6 +727,18 @@ require([
 
 		  // When resolved, returns features and graphics that satisfy the query.
           queryTask.execute(query).then(featuresQueryResult).otherwise(queryTaskErrorHandler);
+          
+	}
+    function querySearchLayer(layerName,where){
+		var layer = findLayerByName(layerName);
+        var query = layer.createQuery();
+        //query.spatialRelationship ="intersects";
+        //query.geometry = geometry;
+        query.where = where;
+        query.returnGeometry = false;
+        query.outFields = ["*"]; 
+        query.outSpatialReference = new SpatialReference(3857);
+        layer.queryFeatures(query).then(featuresQueryResult).otherwise(queryTaskErrorHandler);       
           
 	}
 
