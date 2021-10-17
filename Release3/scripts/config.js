@@ -38,12 +38,19 @@
             fields:["NashuaGISReplica.GISOWNER.Parcels_Poly.PID","AssessProCopy.dbo.vwNashIMS.OWNER1","AssessProCopy.dbo.vwNashIMS.LOCATION"],
             displayFieldNames:["PID","Owner Name","Address"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
-                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
+                5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]}
+
+                // 0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                // 1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                // 2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                // 3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                // 4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
+                // 5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"}
             },
             addRecord: true
         },
@@ -57,12 +64,12 @@
             fields:["OBJECTID","ROADNAME","TYPE","PREFIX","STREETNAME","STREETTYPE","SUFFIX","SEGMENT_ID","LOW_L","HIGH_L","LOW_R","HIGH_R","ONE_WAY","GlobalID","CODE","FCC","US_Route","ST_Route","City","State",],
             displayFieldNames:["OBJECTID","ROADNAME","TYPE","PREFIX","STREETNAME","STREETTYPE","SUFFIX","SEGMENT_ID","LOW_L","HIGH_L","LOW_R","HIGH_R","ONE_WAY","GlobalID","CODE","FCC","US_Route","ST_Route","City","State"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?asset_number={SEGMENT_ID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?asset_number={SEGMENT_ID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?asset_number={SEGMENT_ID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?asset_number={SEGMENT_ID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?asset_number={SEGMENT_ID}"},
-                5:{ disabled: false, name: "License", add:"../../projects/edit/0?asset_number={SEGMENT_ID}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['asset_number','SEGMENT_ID']]},
+                5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['asset_number','SEGMENT_ID']]}
             },
             addRecord: true
         }

@@ -174,11 +174,10 @@ require([
         var results = new Array();
         if (features.length == 0){
             document.getElementById('divResults').innerHTML = "No records found";
-            
             return;
         }
-        
-        displayFeatures(features);
+        var layerConfig = getLayerConfig(queryLayer.title);
+        displayFeatures(features,layerConfig);
         for (var i in features)
         {
             var eachFeature = features[i];
@@ -298,15 +297,21 @@ require([
 				
 				
 				if (this.searchKeyFieldType == "text"){      
-                    if (this.searchOperator == "like"){
-                        adjText = "'%" + adjText +"%'" ;    
-                    } 
-                    else{
+                    if(this.searchOperator != "like"){
                         adjText = "'" + adjText +"'" ;
-                    }             
+                    }
+                    
+                    // if (this.searchOperator == "like"){
+                    //     adjText = "'%" + adjText +"%'" ;    
+                    // } 
+                    // else{
+                    //     adjText = "'" + adjText +"'" ;
+                    // }             
                     
                 }
+
                 queryLayer = this.targetLayer;
+                console.log(queryLayer);
                 findByParcel(this.targetLayer,this.searchKeyField,this.searchOperator, adjText);
                // var lyr = findLayerByName('Parcels');
                // findByParcel(lyr,this.searchKeyField,this.searchOperator,adjText)

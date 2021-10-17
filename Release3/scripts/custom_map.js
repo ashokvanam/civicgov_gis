@@ -154,7 +154,7 @@ function addRecordsLink(linkName,url){
     link.innerHTML = linkName;
     return link;
 }
-function displayFeatures(features)
+function displayFeatures(features,layerConfig)
 {
     document.getElementById('divResultsAll').innerHTML = '';
     // var tab = document.getElementById('tblResults');
@@ -171,18 +171,18 @@ function displayFeatures(features)
         //row.appendChild(colHeader);
         var col = document.createElement('td');
         var content = '';
-        for (var j in map_config.search.FIELDS) {            
+        for (var j in layerConfig.fields){// map_config.search.FIELDS) {            
             if (content == '')
             {
-                content = map_config.search.FIELD_ALIAS[j] + ":" + feature.attributes[map_config.search.FIELDS[j]];
+                content = layerConfig.displayFieldNames[j] + ":" + feature.attributes[layerConfig.fields[j]];
             }
             else
             {
-                content = content + '<br>' + map_config.search.FIELD_ALIAS[j] + ":" + feature.attributes[map_config.search.FIELDS[j]];
+                content = content + '<br>' + layerConfig.displayFieldNames[j] + ":" + feature.attributes[layerConfig.fields[j]];
             }
         }
        //var records = generateAddRecorLinks(map_config.search,feature.attributes[map_config.search.civicgovField]);
-       var records = generateAddRecorLinks(map_config.search,feature.attributes);
+       var records = generateAddRecorLinks(layerConfig,feature.attributes);
         //generatePopupContent(map_config.search)
         
         col.innerHTML = content;
