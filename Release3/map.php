@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="css/demo.css"/>
     <link type="text/css" rel="stylesheet" href="../dist/mmenu.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
     <!-- IE 10 and 11 polyfills -->
     <script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Array.prototype.filter%2CArray.prototype.forEach%2CArray.prototype.map%2CElement.prototype.cloneNode%2Cdocument.querySelector"></script>
@@ -195,7 +197,9 @@
     <script src="scripts/controls_config.js"></script>
     <script>
         var assetNumber = "<?php echo isset($_GET['asset_number']) ? $_GET['asset_number'] : ''; ?>";
+        var assetType = "<?php echo isset($_GET['asset_type']) ? $_GET['asset_type'] : ''; ?>";
         map_config.ASSET_NUMBER = assetNumber;
+        map_config.ASSET_TYPE = assetType;
     </script>
 
 

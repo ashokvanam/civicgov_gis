@@ -228,5 +228,59 @@ function searchControlSet(name)
 	return div;
 }
 
+function promptLayerSelection(layerlist,callbackLayer){
+    var cnt=0;
+    var dialogDiv = document.createElement('div');
+    
+    dialogDiv.id='prompt';
+    //dialogDiv.style="width:25%;height:25%;z-index:99";
+    var lastItemKey='';
+    for (var i in layerlist){
+        cnt++;
+        var opt = document.createElement('input')
+        opt.id='layer-'+i;
+        opt.type='radio';
+        opt.name='layer';
+        
+        opt.addEventListener('change', function() {
+            callbackLayer(this.value);
+            $( dialogDiv ).dialog( "close" );    
+        })
+        opt.value=i;
+        lastItemKey=i;
+        var label = document.createElement('label');
+        label.innerHTML = i;
+        label.for = opt.id;
+        dialogDiv.appendChild(opt);
+        dialogDiv.appendChild(label)
+    }
+    if (cnt==1){
+        callbackLayer(lastItemKey);
+        return;
+    }
+    $(dialogDiv ).dialog({
+        //position: { my: "center center", at: "center center" },
+        title:'Select Layer',
+        resizable: false,
+        height: "auto",
+        width: 400,
+        buttons: [
+            {
+              text: "Ok",
+              icon: "ui-icon-heart",
+              click: function() {
+                $( this ).dialog( "close" );                
+              }
+         
+              // Uncommenting the following line would hide the text,
+              // resulting in the label being used as a tooltip
+              //showText: false
+            }
+          ]
+        //modal: true,
+    });
+    $(dialogDiv ).dialog( "open" );
+}
+
 
 

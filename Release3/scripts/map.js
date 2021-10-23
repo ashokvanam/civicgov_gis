@@ -428,13 +428,16 @@ require([
                     map_config.ASSET_NUMBER = "'" + map_config.ASSET_NUMBER +"'" ;
                 }             
             } */
-			if (map_config.search.parcelLinkFieldType == "text")
+			if (spatialsearch_config[map_config.ASSET_TYPE].keyFieldType == "text")
 			{			
 				map_config.ASSET_NUMBER = "'" + map_config.ASSET_NUMBER +"'" ;
 			}
-            searchAddress(map_config.search.parcelLinkField,"=",map_config.ASSET_NUMBER);
+            //searchAddress(map_config.search.parcelLinkField,"=",map_config.ASSET_NUMBER);
             //searchAddress(searchcontrols_config.Asset.keyField,searchcontrols_config.Asset.operator,map_config.ASSET_NUMBER);
-            //findByParcel(layer,searchcontrols_config.Asset.keyField,searchcontrols_config.Asset.operator, map_config.ASSET_NUMBER);
+            var layer = findLayerByName(spatialsearch_config[map_config.ASSET_TYPE].layer);
+            queryLayer = layer;
+
+            findByParcel(layer,spatialsearch_config[map_config.ASSET_TYPE].keyField,spatialsearch_config[map_config.ASSET_TYPE].operator, map_config.ASSET_NUMBER);
 		}
         generateSearchControls(0);
         view.on("click", function(event) {
@@ -444,7 +447,7 @@ require([
             graphicSelectionLayer.add(point);
             isSpatialSearch = true;
             zoomToResults = false;
-            findIntersected();
+            findIntersected(true);
             /*
             view.hitTest(event).then(function(response) {
               // check if a feature is returned from the hurricanesLayer
@@ -595,7 +598,7 @@ require([
         
     }
 
-    function findIntersected()
+    function findIntersected(isClick)
     {
         if (graphicSelectionLayer) {
             if (graphicSelectionLayer.graphics.length < 1) {
@@ -612,7 +615,10 @@ require([
 		//geometryUsedForQuery(graphicSelectionLayer.graphics.items[0].geometry);
         //spatialQueryMapServer(graphicSelectionLayer.graphics.items[0].geometry);
         geometryUsedForQuery(bufferGeometry);
-        spatialQueryMapServer(bufferGeometry);
+        if (!isClick){
+            spatialQueryMapServer(bufferGeometry);
+        }
+        
         //graphicSelectionLayer.graphics.removeAll();
     }
 
@@ -696,15 +702,20 @@ require([
     function queryTaskErrorHandler(err){
         console.log(err);
     }
-    function spatialQueryMapServer(geometry) {
-        var layer = findLayerByName(spatialsearch_config.Parcel.layer);
-        var query = layer.createQuery();
-        query.spatialRelationship ="intersects";
-        query.geometry = geometry;
-        query.returnGeometry = true;
-        query.outFields = ["*"]; 
-        query.outSpatialReference = new SpatialReference(3857);
-        layer.queryFeatures(query).then(featuresQueryResult).otherwise(queryTaskErrorHandler);       
+    function spatialQueryMapServer(geometry) {        
+        promptLayerSelection(spatialsearch_config,function(selected){
+            //var layer = findLayerByName(spatialsearch_config.Parcel.layer);            
+            var layer = findLayerByName(spatialsearch_config[selected].layer);
+            queryLayer = layer;
+            var query = layer.createQuery();
+            query.spatialRelationship ="intersects";
+            query.geometry = geometry;
+            query.returnGeometry = true;
+            query.outFields = ["*"]; 
+            query.outSpatialReference = new SpatialReference(3857);
+            layer.queryFeatures(query).then(featuresQueryResult).otherwise(queryTaskErrorHandler); 
+        });
+              
     }
     function attributeQueryMapServer(layer,where) {
         

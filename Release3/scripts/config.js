@@ -5,6 +5,7 @@
    // FIELDS: ["MBL", "LOCATION",],
    // FIELD_ALIAS:["MBL#", "ADDRESS"],
     ASSET_NUMBER:'',
+    ASSET_TYPE:'',
 	search:{
         //url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Basemap_Color_Buildings/MapServer/0",		
         url:"https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0",
@@ -35,15 +36,15 @@
             legendText:'Parcels',			 
            // Link_Field:"AssessProCopy.dbo.vwNashIMS.PID",
             //Link_Field_Type:"text",
-            fields:["NashuaGISReplica.GISOWNER.Parcels_Poly.PID","AssessProCopy.dbo.vwNashIMS.OWNER1","AssessProCopy.dbo.vwNashIMS.LOCATION"],
-            displayFieldNames:["PID","Owner Name","Address"],
+            fields:["NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT","NashuaGISReplica.GISOWNER.Parcels_Poly.PID","AssessProCopy.dbo.vwNashIMS.OWNER1","AssessProCopy.dbo.vwNashIMS.LOCATION"],
+            displayFieldNames:["PACCT","PID","Owner Name","Address"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]},
-                5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PID']]}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT']]},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT']]},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT']]},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT']]},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT']]},
+                5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','NashuaGISReplica.GISOWNER.Parcels_Poly.PACCT']]}
 
                 // 0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
                 // 1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={NashuaGISReplica.GISOWNER.Parcels_Poly.PID}"},
