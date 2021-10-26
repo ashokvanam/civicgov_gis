@@ -47,7 +47,7 @@ function generatePopupContent(layerConfig){
     var row =document.createElement('tr');
         for (var j in recordsConfig){
             if (recordsConfig[j].disabled == false){
-                var eachRecordLink = addRecordsLink(recordsConfig[j].name,recordsConfig[j].add);                
+                var eachRecordLink = addRecordsLink(recordsConfig[j].name,recordsConfig[j].add,recordsConfig[j].params);                
                 divPopup.appendChild(eachRecordLink);
                 var colValue = document.createElement('td');
                 colValue.appendChild(eachRecordLink);
@@ -147,7 +147,16 @@ function generateAddRecorLinks(layerConfig, attributes){
     divPopup.appendChild(tblFeatureInfo);
     return divPopup;
 }
-function addRecordsLink(linkName,url){
+function addRecordsLink(linkName,url,params){
+    for(var i in params){
+        var eachParam = params[i];
+        if (i==0){
+            url = url + '' + eachParam[0] + '={' + eachParam[1] + '}';
+        }
+        else{
+            url = url + '&' + eachParam[0] + '={' + eachParam[1] + '}';
+        }
+    }
     var link = document.createElement('a');
     link.href = url;
     link.target ="_blank";
