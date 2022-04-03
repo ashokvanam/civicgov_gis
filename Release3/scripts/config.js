@@ -8,20 +8,20 @@
 	search:{
         //url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Basemap_Color_Buildings/MapServer/0",		
         url:"https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205",
-		keyField:"PID", //This key link to the Parcel Layer
-		keyFieldType:"number",
-        FIELDS: ['PID',"OWNER","LOCN"],
+		keyField:"PINFormat", //This key link to the Parcel Layer
+		keyFieldType:"text",
+        FIELDS: ['PINFormat',"OWNER","LOCN"],
         //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
         FIELD_ALIAS:["Property ID","Owner","Address"],
-        civicgovField: "PID", civicgovFieldType:"number",
-        parcelLinkField: "PID", parcelLinkFieldType:"number",
+        civicgovField: "PINFormat", civicgovFieldType:"text",
+        parcelLinkField: "PINFormat", parcelLinkFieldType:"text",
         records:{
-            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PID']]},
-            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PID']]},
-            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PID']]},
-            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PID']]},
-            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PID']]},
-            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PID']]}
+            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PINFormat']]},
+            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PINFormat']]},
+            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PINFormat']]},
+            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PINFormat']]},
+            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PINFormat']]},
+            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PINFormat']]}
         }
 	},
     layers:{
@@ -29,22 +29,22 @@
             name:"Parcel",            
             selectable:true, 
             //keyField:"STATE_ID",
-            keyField:"PID",
+            keyField:"PINFormat",
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
             legendText:'Parcel',			
             Link_Layer:"Building",
-            Link_Field:"PID",
+            Link_Field:"PINFormat",
             Link_Field_Type:"NUMBER",
-            fields:['PID',"OWNER","LOCN"],
+            fields:['PINFormat',"OWNER","LOCN"],
             displayFieldNames:["Property ID","Owner","Address"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PID}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PID}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PID}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PID}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PID}"},
-                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PID}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PINFormat}"},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PINFormat}"},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PINFormat}"},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PINFormat}"},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PINFormat}"},
+                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PINFormat}"}
             },
             addRecord: true
         }
