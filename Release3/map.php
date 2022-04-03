@@ -206,7 +206,7 @@
         <?php if(!isset($_REQUEST['flag'])) { ?>
             <a href="#menu"><span></span></a>
         <?php } ?>
-        CIVICGov GIS - Portland
+        CIVICGov GIS - Culpepper
         <span onclick="toggleLayers()" style="    margin-right: -40px;cursor: pointer;float: right !important;"><i class="fas fa-layer-group"></i> Layers</span>
     </div>
     <div class="content">

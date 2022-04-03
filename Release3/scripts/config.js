@@ -10,9 +10,9 @@
         url:"https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205",
 		keyField:"PINFormat", //This key link to the Parcel Layer
 		keyFieldType:"text",
-        FIELDS: ['PINFormat',"OWNER","LOCN"],
+        FIELDS: ["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
         //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
-        FIELD_ALIAS:["Property ID","Owner","Address"],
+        FIELD_ALIAS:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
         civicgovField: "PINFormat", civicgovFieldType:"text",
         parcelLinkField: "PINFormat", parcelLinkFieldType:"text",
         records:{
