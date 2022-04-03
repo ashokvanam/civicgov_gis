@@ -36,8 +36,8 @@
             Link_Layer:"Building",
             Link_Field:"PINFormat",
             Link_Field_Type:"NUMBER",
-            fields:['PINFormat',"OWNER","LOCN"],
-            displayFieldNames:["Property ID","Owner","Address"],
+            fields:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
+            displayFieldNames:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
             records:{
                 0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PINFormat}"},
                 1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PINFormat}"},
