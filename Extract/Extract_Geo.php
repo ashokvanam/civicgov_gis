@@ -43,7 +43,7 @@ function importParcels()
     header("Content-Type: text/csv");
     header("Content-Disposition: attachment; filename=latlon.csv");
 
-    $API_ENDPOINT = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?";
+    $API_ENDPOINT = "https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205/query?";
     $all_results = array();
     $ids = getObjectIDs($API_ENDPOINT);
     $count = 0;

@@ -4,7 +4,7 @@
 function getCount($API_ENDPOINT)
 {
 	$typeofjson = "pjson";
-	$API_ENDPOINT = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?";
+	$API_ENDPOINT = "https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205/query?";
 
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
@@ -31,7 +31,7 @@ function getCount($API_ENDPOINT)
 function getObjectIDs($API_ENDPOINT)
 {
 	$typeofjson = "pjson";
-	$API_ENDPOINT = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?";
+	$API_ENDPOINT = "https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205/query?";
 
 	$data = array("where" => "1=1","returnIdsOnly"=>"true","f"=>"pjson");
 	$fields_string = "";
@@ -58,7 +58,7 @@ function requestDataSetById($ids, $API_ENDPOINT)
 	$outfields = "*"; //$ini['fields']; [Uncomment the "$ini['fields']" to read config param from ini file and comment '"*"']
 	$attributes = array();
 	$typeofjson = "pjson";
-	$API_ENDPOINT = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?";
+	$API_ENDPOINT = "https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205/query?";
 
 	$data = array("objectids" => $ids,"returnGeometry"=>"false","f"=>$typeofjson,"outfields"=>$outfields);
 	$fields_string = "";
@@ -103,7 +103,7 @@ function requestDataSetById($ids, $API_ENDPOINT)
 function importParcels()
 {
 	$typeofjson = "pjson";
-	$data = "https://newgis.nashuanh.gov/arcgisapp3/rest/services/WFS/Nashua_RoadCL/MapServer/0/query?";
+	$data = "https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205/query?";
 	if(!empty($data)) {
 		$API_ENDPOINT = $data;
 		$all_results = array();
