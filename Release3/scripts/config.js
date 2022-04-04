@@ -16,12 +16,12 @@
         civicgovField: "RECID", civicgovFieldType:"text",
         parcelLinkField: "RECID", parcelLinkFieldType:"text",
         records:{
-            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PINFormat']]},
-            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PINFormat']]},
-            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','PINFormat']]},
-            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','PINFormat']]},
-            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','PINFormat']]},
-            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','PINFormat']]}
+            0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','RECID']]},
+            1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','RECID']]},
+            2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?",params:[['parcel_number','RECID']]},
+            3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?",params:[['parcel_number','RECID']]},
+            4:{ disabled: false, name: "Project", add:"../../projects/edit/0?",params:[['parcel_number','RECID']]},
+            5:{ disabled: false, name: "License", add:"../../projects/edit/0?",params:[['parcel_number','RECID']]}
         }
 	},
     layers:{
@@ -39,12 +39,12 @@
             fields:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
             displayFieldNames:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
             records:{
-                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={PINFormat}"},
-                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={PINFormat}"},
-                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={PINFormat}"},
-                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={PINFormat}"},
-                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={PINFormat}"},
-                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={PINFormat}"}
+                0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?parcel_number={RECID}"},
+                1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?parcel_number={RECID}"},
+                2:{ disabled: false, name:"Inspection", add:"../../inspections/edit/0?parcel_number={RECID}"},
+                3:{ disabled: false, name:"Violation", add:"../../violations/edit/0?parcel_number={RECID}"},
+                4:{ disabled: false, name: "Project", add:"../../projects/edit/0?parcel_number={RECID}"},
+                5:{ disabled: false, name: "License", add:"../../licenses/edit/0?parcel_number={RECID}"}
             },
             addRecord: true
         }
