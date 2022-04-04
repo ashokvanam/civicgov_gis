@@ -8,13 +8,13 @@
 	search:{
         //url:"https://www.portlandmaps.com/arcgis/rest/services/Public/Basemap_Color_Buildings/MapServer/0",		
         url:"https://www.webgis.net/arcgis/rest/services/VA/CulpeperWebGIS/MapServer/205",
-		keyField:"PINFormat", //This key link to the Parcel Layer
+		keyField:"RECID", //This key link to the Parcel Layer
 		keyFieldType:"text",
         FIELDS: ["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
         //FIELD_ALIAS:["Building ID","Building Name", "Address","Building Type", "Building Use"],
         FIELD_ALIAS:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
-        civicgovField: "PINFormat", civicgovFieldType:"text",
-        parcelLinkField: "PINFormat", parcelLinkFieldType:"text",
+        civicgovField: "RECID", civicgovFieldType:"text",
+        parcelLinkField: "RECID", parcelLinkFieldType:"text",
         records:{
             0:{ disabled: false, name:"Permit", add:"../../permits/edit/0?",params:[['parcel_number','PINFormat']]},
             1:{ disabled: false, name:"Complaint", add:"../../complaints/edit/0?",params:[['parcel_number','PINFormat']]},
@@ -29,12 +29,12 @@
             name:"Parcel",            
             selectable:true, 
             //keyField:"STATE_ID",
-            keyField:"PINFormat",
+            keyField:"RECID",
             keyFieldType:"text",    
             legendColor:'#FFEBAF',
             legendText:'Parcel',			
             Link_Layer:"Building",
-            Link_Field:"PINFormat",
+            Link_Field:"RECID",
             Link_Field_Type:"NUMBER",
             fields:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
             displayFieldNames:["OBJECTID","PINFormat","PID","RECID","MAP","OWNER","COOWNER","ADD1","ADD2","ADD3","CITY","STATE","ZIP","ACRE","ZONING","MAGCD","OCCUP","LUSE","DESCRIPTIO","USE_CODE","YRBLT","DBOOK","DPAGE","SALEDATE","SALEPRICE","LOCN","CITY_PA","STATE_PA","ZIP_PA","Shape_Length","Shape_Area","WebLINK","MAP_","INSERT_","SUBD","BLOCK","LOT","SUBLOT","Name","AgDistrict","ConservationEasements","TechnologyZone","AC","BR","Alt_Approv"],
