@@ -23,7 +23,7 @@ $fields_string = "";
 		foreach($data as $key=>$value) {
 			$fields_string .= $key.'='.$value.'&'; 
 		}
-echo $fields_string;
+//echo $fields_string;
 //$data = array("where" => "PROPERTYIFGD='R317362'");
 $ch = curl_init($url_layer_query);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
